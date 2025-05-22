@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Morning & Night - Opposites Attract</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button id="toggleBtn">Toggle Day/Night</button>
+  <div class="split-container">
+    <div class="morning-side">
+      <h1>🌅 Morning Me</h1>
+      <p>Energetic, driven, optimistic. Ready to train and take on the world!</p>
+      <h2>Skills</h2>
+      <ul>
+        <li>Focused productivity</li>
+        <li>Goal setting</li>
+        <li>Early planning</li>
+      </ul>
+      <h2>Pokémon Vibe</h2>
+      <p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Charmander" /> Charmander 🔥</p>
+      <h2>My Trainer Sprite</h2>
+      <img src="day-sprite.png" alt="Day Trainer" class="trainer-sprite" />
+    </div>
+    
+    <div class="night-side">
+      <h1>🌙 Night Me</h1>
+      <p>Reflective, imaginative, a strategist under the stars.</p>
+      <h2>Skills</h2>
+      <ul>
+        <li>Creative problem solving</li>
+        <li>Game design ideas</li>
+        <li>Deep focus</li>
+      </ul>
+      <h2>Pokémon Vibe</h2>
+      <p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png" alt="Umbreon" /> Umbreon 🌌</p>
+      <h2>My Trainer Sprite</h2>
+      <img src="night-sprite.png" alt="Night Trainer" class="trainer-sprite" />
+    </div>
+  </div>
+  <script>
+    const btn = document.getElementById('toggleBtn');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('night');
+    });
+  </script>
+</body>
+</html>

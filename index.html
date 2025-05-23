@@ -44,11 +44,30 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .gif-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      animation: floatUp 2s ease forwards;
+    }
+
+    .side-gif {
+      width: 80px;
+      height: auto;
+      animation: bob 2s infinite ease-in-out;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     h1 {
       font-size: 1.5rem;
-      margin-bottom: 40px;
+      margin: 20px 0;
       text-shadow: 2px 2px 6px #000;
-      animation: floatUp 2s ease forwards;
     }
 
     .button-container {
@@ -114,6 +133,10 @@
         font-size: 0.6rem;
         padding: 6px 10px;
       }
+
+      .side-gif {
+        width: 50px;
+      }
     }
   </style>
 </head>
@@ -121,7 +144,11 @@
   <div class="bg"></div>
 
   <div class="content">
-    <h1>Welcome to Rishabh’s World</h1>
+    <div class="gif-row">
+      <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Toothless Dancing" class="side-gif" />
+      <h1>Welcome to Rishabh’s World</h1>
+      <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Toothless Dancing" class="side-gif" />
+    </div>
     <div class="button-container">
       <a href="profile.html">Enter Profile</a>
     </div>
@@ -150,4 +177,3 @@
   </script>
 </body>
 </html>
-

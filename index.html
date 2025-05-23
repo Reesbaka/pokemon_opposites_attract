@@ -40,19 +40,26 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
       font-size: 1.5rem;
       margin-bottom: 40px;
       text-shadow: 2px 2px 6px #000;
+      animation: floatUp 2s ease forwards;
     }
 
     .button-container {
       display: flex;
       gap: 20px;
+      animation: floatUp 2.5s ease forwards;
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     a {
@@ -77,6 +84,21 @@
       50% { transform: scale(1.05); }
     }
 
+    #music-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 8px 14px;
+      background: #ffffffaa;
+      color: #222;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-family: 'Press Start 2P', cursive;
+      z-index: 10;
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 1rem;
@@ -86,6 +108,11 @@
       a {
         padding: 12px 20px;
         font-size: 0.6rem;
+      }
+
+      #music-btn {
+        font-size: 0.6rem;
+        padding: 6px 10px;
       }
     }
   </style>
@@ -99,5 +126,28 @@
       <a href="profile.html">Enter Profile</a>
     </div>
   </div>
+
+  <button id="music-btn">🔇 Music</button>
+  <audio id="bg-music" autoplay loop>
+    <source src="bg-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const music = document.getElementById('bg-music');
+    const btn = document.getElementById('music-btn');
+    let isPlaying = false;
+
+    btn.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        btn.textContent = '🔇 Music';
+      } else {
+        music.play();
+        btn.textContent = '🔊 Music';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
 </body>
 </html>
+

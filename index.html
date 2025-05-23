@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Rishabh - Choose Your World</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -16,16 +16,38 @@
       font-family: 'Press Start 2P', cursive;
       color: white;
       overflow: hidden;
+      cursor: url('https://cur.cursors-4u.net/cursors/cur-10/cur949.cur'), auto;
     }
 
+    /* Background GIF with parallax */
     .bg {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      width: 110%; /* Slightly bigger for parallax */
+      height: 110%;
+      z-index: -2;
       background: url('https://pa1.narvii.com/6248/9317a52d942481b271cd0596cd49dda01e04283a_hq.gif') center center / cover no-repeat;
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Left and right dancing lizards */
+    .side-gif {
+      position: fixed;
+      top: 50%;
+      width: 150px;
+      height: 150px;
+      transform: translateY(-50%);
+      z-index: 1;
+      pointer-events: none;
+      transition: transform 0.2s ease-out;
+    }
+    .left-gif {
+      left: 20px;
+    }
+    .right-gif {
+      right: 20px;
+      transform: translateY(-50%) scaleX(-1); /* Flip horizontally */
     }
 
     .content {
@@ -37,6 +59,9 @@
       text-align: center;
       background-color: rgba(0, 0, 0, 0.5);
       animation: fadeIn 2s ease-out;
+      position: relative;
+      padding: 0 180px; /* Leave room for side GIFs */
+      user-select: none;
     }
 
     @keyframes fadeIn {
@@ -44,36 +69,35 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .gif-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      animation: floatUp 2s ease forwards;
-    }
-
-    .side-gif {
-      width: 200px;
-      height: auto;
-      animation: bob 2s infinite ease-in-out;
-    }
-
-    @keyframes bob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    h1 {
+    /* Typing effect container */
+    .typing {
       font-size: 1.5rem;
-      margin: 20px 0;
+      margin-bottom: 40px;
       text-shadow: 2px 2px 6px #000;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid white;
+      width: 0;
+      animation:
+        typing 3s steps(28) forwards,
+        blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 18ch } /* adjust based on text length */
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+      100% { border-color: white }
     }
 
     .button-container {
       display: flex;
       gap: 20px;
       animation: floatUp 2.5s ease forwards;
+      position: relative;
+      z-index: 2;
     }
 
     @keyframes floatUp {
@@ -81,7 +105,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Ripple effect button */
     a {
+      position: relative;
+      overflow: hidden;
       text-decoration: none;
       padding: 15px 30px;
       background: #fffd;
@@ -91,6 +118,8 @@
       color: #222;
       transition: transform 0.3s ease, background 0.3s ease;
       animation: pulse 2s infinite ease-in-out;
+      cursor: pointer;
+      user-select: none;
     }
 
     a:hover {
@@ -101,6 +130,22 @@
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
+    }
+
+    /* Ripple circle */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(34, 34, 34, 0.4);
+      animation: ripple-effect 0.6s linear;
+      pointer-events: none;
+      transform: scale(0);
+    }
+    @keyframes ripple-effect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
 
     #music-btn {
@@ -116,39 +161,39 @@
       cursor: pointer;
       font-family: 'Press Start 2P', cursive;
       z-index: 10;
+      user-select: none;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1rem;
-        padding: 0 10px;
+      .side-gif {
+        display: none; /* Hide side GIFs on mobile */
       }
-
+      .content {
+        padding: 0 20px;
+      }
+      .typing {
+        font-size: 1rem;
+      }
       a {
         padding: 12px 20px;
         font-size: 0.6rem;
       }
-
       #music-btn {
         font-size: 0.6rem;
         padding: 6px 10px;
-      }
-
-      .side-gif {
-        width: 50px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="bg"></div>
+  <div class="bg" id="bg"></div>
+
+  <!-- Side GIFs -->
+  <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Left Lizard" class="side-gif left-gif" />
+  <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Right Lizard" class="side-gif right-gif" />
 
   <div class="content">
-    <div class="gif-row">
-      <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Toothless Dancing" class="side-gif" />
-      <h1>Welcome to Rishabh’s World</h1>
-      <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Toothless Dancing" class="side-gif" />
-    </div>
+    <h1 class="typing">Welcome to Rishabh’s World</h1>
     <div class="button-container">
       <a href="profile.html">Enter Profile</a>
     </div>
@@ -156,10 +201,11 @@
 
   <button id="music-btn">🔇 Music</button>
   <audio id="bg-music" autoplay loop>
-    <source src="bg-music.mp3" type="audio/mpeg">
+    <source src="bg-music.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
+    // Music toggle
     const music = document.getElementById('bg-music');
     const btn = document.getElementById('music-btn');
     let isPlaying = false;
@@ -173,6 +219,37 @@
         btn.textContent = '🔊 Music';
       }
       isPlaying = !isPlaying;
+    });
+
+    // Parallax effect on mouse move
+    const bg = document.getElementById('bg');
+    const leftGif = document.querySelector('.left-gif');
+    const rightGif = document.querySelector('.right-gif');
+
+    window.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+
+      // Move background slightly opposite direction, max 20px shift
+      bg.style.transform = `translate(${(x - 0.5) * -20}px, ${(y - 0.5) * -20}px)`;
+
+      // Move side gifs a bit following cursor, max 30px shift
+      leftGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * 30}px)`;
+      rightGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * -30}px) scaleX(-1)`;
+    });
+
+    // Ripple effect on button click
+    document.querySelectorAll('a').forEach(button => {
+      button.addEventListener('click', function (e) {
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+        ripple.style.left = (e.clientX - rect.left - ripple.offsetWidth / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - ripple.offsetHeight / 2) + 'px';
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
     });
   </script>
 </body>

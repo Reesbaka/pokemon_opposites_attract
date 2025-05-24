@@ -18,7 +18,7 @@
       overflow: hidden;
       cursor: url('https://cur.cursors-4u.net/cursors/cur-10/cur949.cur'), auto;
     }
-    
+
     .bg {
       position: fixed;
       top: 0;
@@ -101,8 +101,8 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
-    a {
+
+    .button-container a {
       position: relative;
       overflow: hidden;
       text-decoration: none;
@@ -118,7 +118,7 @@
       user-select: none;
     }
 
-    a:hover {
+    .button-container a:hover {
       transform: scale(1.08);
       background: #fff;
     }
@@ -157,9 +157,37 @@
       font-family: 'Pokemon GB', cursive;
       z-index: 10;
       user-select: none;
-
       box-shadow: 0 0 8px #00ccff, 0 0 16px #00ccff, 0 0 24px #00ccff;
       transition: box-shadow 0.3s ease;
+    }
+
+    .social-links {
+      margin-top: 25px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .social-links a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+    }
+
+    .social-links img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+      filter: drop-shadow(0 0 4px #00ccff);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .social-links a:hover img {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 8px #66e0ff);
     }
 
     @media (max-width: 600px) {
@@ -172,7 +200,7 @@
       .typing {
         font-size: 1rem;
       }
-      a {
+      .button-container a {
         padding: 12px 20px;
         font-size: 0.6rem;
       }
@@ -181,34 +209,6 @@
         padding: 6px 10px;
       }
     }
-    .social-links {
-  margin-top: 25px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
-
-.social-links a {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-}
-
-.social-links img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 0 4px #00ccff);
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.social-links a:hover img {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 8px #66e0ff);
-}
-
   </style>
 </head>
 <body>
@@ -219,21 +219,22 @@
 
   <div class="content">
     <h1 class="typing">Welcome to Rishabh’s World</h1>
+
     <div class="button-container">
       <a href="profile.html">Enter Profile</a>
     </div>
-    <div class="social-links">
-  <a href="https://github.com/reesbaka" target="_blank">
-    <img src="https://pngimg.com/uploads/github/github_PNG80.png" alt="GitHub" />
-  </a>
-  <a href="https://linkedin.com/in/rishabh-anand" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/1051/1051384.png" alt="LinkedIn" />
-  </a>
-  <a href="https://discordapp.com/users/575706891091574832" target="_blank">
-    <img src="https://pnghq.com/wp-content/uploads/2023/02/discord-icon-png-1205-1024x1024.png" alt="Discord" />
-  </a>
-</div>
 
+    <div class="social-links">
+      <a href="https://github.com/reesbaka" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+      </a>
+      <a href="https://linkedin.com/in/rishabh-anand" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+      </a>
+      <a href="https://discord.com/users/575706891091574832" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />
+      </a>
+    </div>
   </div>
 
   <button id="music-btn">🔇 Music</button>
@@ -273,8 +274,9 @@
       leftGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * 30}px)`;
       rightGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * -30}px) scaleX(-1)`;
     });
-    
-    document.querySelectorAll('a').forEach(button => {
+
+    // Only apply ripple to button-container <a> links
+    document.querySelectorAll('.button-container a').forEach(button => {
       button.addEventListener('click', function (e) {
         const rect = button.getBoundingClientRect();
         const ripple = document.createElement('span');

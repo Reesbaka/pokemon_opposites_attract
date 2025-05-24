@@ -34,17 +34,17 @@
       position: fixed;
       top: 50%;
       width: 150px;
-      height: 150px;
+      height: 225px;
       transform: translateY(-50%);
       z-index: 1;
       pointer-events: none;
       transition: transform 0.2s ease-out;
     }
     .left-gif {
-      left: 200px;
+      left: 250px;
     }
     .right-gif {
-      right: 200px;
+      right: 250px;
       transform: translateY(-50%) scaleX(-1); 
     }
 
@@ -73,11 +73,11 @@
       text-shadow: 2px 2px 6px #000;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 3px solid white;
+      border-right: 3px transparent;
       width: 0;
       animation:
-        typing 3s steps(28) forwards,
-        blink 0.75s step-end infinite;
+        typing 3.5s steps(28) forwards,
+        blink 1.5s;
     }
 
     @keyframes typing {
@@ -98,7 +98,7 @@
     }
 
     @keyframes floatUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(1000px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -108,10 +108,10 @@
       text-decoration: none;
       padding: 15px 30px;
       background: #fffd;
-      border: 2px solid #222;
-      border-radius: 12px;
+      border: 1px solid #FFFFFF;
+      border-radius: 10px;
       font-weight: bold;
-      color: #222;
+      color: #100A2B;
       transition: transform 0.3s ease, background 0.3s ease;
       animation: pulse 2s infinite ease-in-out;
       cursor: pointer;
@@ -119,13 +119,13 @@
     }
 
     .button-container a:hover {
-      transform: scale(1.08);
-      background: #fff;
+      transform: scale(3);
+      background: #425D87;
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.1); }
     }
 
     .ripple {
@@ -148,9 +148,8 @@
       top: 10px;
       left: 10px;
       padding: 8px 14px;
-      background: #ffffffaa;
-      color: #222;
-      border: none;
+      background: #B7B0D8;
+      border: 1px solid #FFFFFF;
       border-radius: 10px;
       font-size: 0.8rem;
       cursor: pointer;
@@ -164,7 +163,7 @@
     .social-links {
       margin-top: 25px;
       display: inline-flex;
-      gap: 20px;
+      gap: 30px;
       justify-content: center;
       align-items: center;
       z-index: 2;
@@ -188,25 +187,7 @@
       transform: scale(1.2);
     }
 
-    @media (max-width: 600px) {
-      .side-gif {
-        display: none; 
-      }
-      .content {
-        padding: 0 20px;
-      }
-      .typing {
-        font-size: 1rem;
-      }
-      .button-container a {
-        padding: 12px 20px;
-        font-size: 0.6rem;
-      }
-      #music-btn {
-        font-size: 0.6rem;
-        padding: 6px 10px;
-      }
-    }
+   
   </style>
 </head>
 <body>
@@ -226,7 +207,7 @@
       <a href="https://github.com/reesbaka" target="_blank">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
       </a>
-      <a href="https://linkedin.com/in/rishabh-anand" target="_blank">
+      <a href="https://linkedin.com/in/rishabh-anand-599795280" target="_blank">
         <img src="https://pluspng.com/img-png/linkedin-icon-vector-png-linkedin-icon-1600.png" alt="LinkedIn" />
       </a>
       <a href="https://discord.com/users/575706891091574832" target="_blank">
@@ -235,7 +216,7 @@
     </div>
   </div>
 
-  <button id="music-btn">🔇 Music</button>
+  <button id="music-btn">🔇</button>
   <audio id="bg-music" autoplay loop>
     <source src="bg-music.mp3" type="audio/mpeg" />
   </audio>
@@ -248,10 +229,10 @@
     btn.addEventListener('click', () => {
       if (isPlaying) {
         music.pause();
-        btn.textContent = '🔇 Music';
+        btn.textContent = '🔇';
       } else {
         music.play();
-        btn.textContent = '🔊 Music';
+        btn.textContent = '🔊 ';
       }
       isPlaying = !isPlaying;
     });
@@ -266,7 +247,7 @@
       const y = e.clientY / window.innerHeight;
 
       // Move background slightly opposite direction, max 20px shift
-      bg.style.transform = `translate(${(x - 0.5) * -20}px, ${(y - 0.5) * -20}px)`;
+      bg.style.transform = `translate(${(x - 0.5) * -30}px, ${(y - 0.5) * -30}px)`;
 
       // Move side gifs a bit following cursor, max 30px shift
       leftGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * 30}px)`;

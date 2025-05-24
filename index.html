@@ -18,20 +18,18 @@
       overflow: hidden;
       cursor: url('https://cur.cursors-4u.net/cursors/cur-10/cur949.cur'), auto;
     }
-
-    /* Background GIF with parallax */
+    
     .bg {
       position: fixed;
       top: 0;
       left: 0;
-      width: 110%; /* Slightly bigger for parallax */
+      width: 110%; 
       height: 110%;
       z-index: -2;
       background: url('https://pa1.narvii.com/6248/9317a52d942481b271cd0596cd49dda01e04283a_hq.gif') center center / cover no-repeat;
       transition: transform 0.2s ease-out;
     }
 
-    /* Left and right dancing lizards */
     .side-gif {
       position: fixed;
       top: 50%;
@@ -43,11 +41,11 @@
       transition: transform 0.2s ease-out;
     }
     .left-gif {
-      left: 20px;
+      left: 100px;
     }
     .right-gif {
-      right: 20px;
-      transform: translateY(-50%) scaleX(-1); /* Flip horizontally */
+      right: 100px;
+      transform: translateY(-50%) scaleX(-1); 
     }
 
     .content {
@@ -60,7 +58,7 @@
       background-color: rgba(0, 0, 0, 0.5);
       animation: fadeIn 2s ease-out;
       position: relative;
-      padding: 0 180px; /* Leave room for side GIFs */
+      padding: 0 180px; 
       user-select: none;
     }
 
@@ -69,7 +67,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Typing effect container */
     .typing {
       font-size: 1.5rem;
       margin-bottom: 40px;
@@ -85,7 +82,7 @@
 
     @keyframes typing {
       from { width: 0 }
-      to { width: 26ch } /* adjust based on text length */
+      to { width: 26ch } 
     }
     @keyframes blink {
       50% { border-color: transparent }
@@ -104,8 +101,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Ripple effect button */
+    
     a {
       position: relative;
       overflow: hidden;
@@ -132,7 +128,6 @@
       50% { transform: scale(1.05); }
     }
 
-    /* Ripple circle */
     .ripple {
       position: absolute;
       border-radius: 50%;
@@ -166,7 +161,7 @@
 
     @media (max-width: 600px) {
       .side-gif {
-        display: none; /* Hide side GIFs on mobile */
+        display: none; 
       }
       .content {
         padding: 0 20px;
@@ -188,7 +183,6 @@
 <body>
   <div class="bg" id="bg"></div>
 
-  <!-- Side GIFs -->
   <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Left Lizard" class="side-gif left-gif" />
   <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Right Lizard" class="side-gif right-gif" />
 
@@ -205,7 +199,6 @@
   </audio>
 
   <script>
-    // Music toggle
     const music = document.getElementById('bg-music');
     const btn = document.getElementById('music-btn');
     let isPlaying = false;
@@ -237,8 +230,7 @@
       leftGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * 30}px)`;
       rightGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * -30}px) scaleX(-1)`;
     });
-
-    // Ripple effect on button click
+    
     document.querySelectorAll('a').forEach(button => {
       button.addEventListener('click', function (e) {
         const rect = button.getBoundingClientRect();

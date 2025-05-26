@@ -197,10 +197,10 @@
   <img src="https://media.tenor.com/ZUZzyaSZYtYAAAAi/toothless-toothless-dancing-meme-gif.gif" alt="Right Lizard" class="side-gif right-gif" />
 
   <div class="content">
-    <h1 class="typing">Welcome to Rishabh’s World</h1>
+    <h1 class="typing">Welcome to my profile!!</h1>
 
     <div class="button-container">
-      <a href="profile.html">Enter Profile</a>
+      <a href="profile.html">Enter</a>
     </div>
 
     <div class="social-links">
@@ -237,7 +237,6 @@
       isPlaying = !isPlaying;
     });
 
-    // Parallax effect on mouse move
     const bg = document.getElementById('bg');
     const leftGif = document.querySelector('.left-gif');
     const rightGif = document.querySelector('.right-gif');
@@ -246,15 +245,13 @@
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
 
-      // Move background slightly opposite direction, max 20px shift
       bg.style.transform = `translate(${(x - 0.5) * -30}px, ${(y - 0.5) * -30}px)`;
 
-      // Move side gifs a bit following cursor, max 30px shift
+      
       leftGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * 30}px)`;
       rightGif.style.transform = `translateY(-50%) translateX(${(x - 0.5) * -30}px) scaleX(-1)`;
     });
 
-    // Only apply ripple to button-container <a> links
     document.querySelectorAll('.button-container a').forEach(button => {
       button.addEventListener('click', function (e) {
         const rect = button.getBoundingClientRect();

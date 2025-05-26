@@ -1,8 +1,7 @@
-```css
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #fff; /* Fallback background */
+  transition: background 0.5s ease;
 }
 
 #toggleBtn {
@@ -24,37 +23,28 @@ body {
   width: 100%;
 }
 
-.morning-side, .night-side {
-  width: 50%;
-  padding: 150px 20px 20px 20px;
-  box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.7); /* Increased opacity for stronger dimming */
-  color: white;
-  transition: opacity 0.5s ease, filter 0.5s ease;
-  animation: slideIn 1s ease forwards;
-}
-
-.morning-side.dimmed, .night-side.dimmed {
-  opacity: 0.5;
-  filter: grayscale(50%);
-}
-
 .morning-side {
-  background-image: url(https://th.bing.com/th/id/R.7d68abd537942d95ac5b2cbb53ed3cf0?rik=GV%2btJJCVIx1i7Q&riu=http%3a%2f%2forig12.deviantart.net%2fb4f8%2ff%2f2015%2f092%2f5%2fe%2fpokemon_sprite_gif___national_park__day__by_loupii-d79aauf.jpg&ehk=a1DU7EwcuHAq30E8M2xyqt3PDlpJd%2fCTNj8khzzqJAc%3d&risl=&pid=ImgRaw&r=0);
+  width: 100%;
+  padding-top: 150px;
+  padding-left: 250px;
+  box-sizing: border-box;
+  color: black;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://th.bing.com/th/id/R.7d68abd537942d95ac5b2cbb53ed3cf0?rik=GV%2btJJCVIx1i7Q&riu=http%3a%2f%2forig12.deviantart.net%2fb4f8%2ff%2f2015%2f092%2f5%2fe%2fpokemon_sprite_gif___national_park__day__by_loupii-d79aauf.jpg&ehk=a1DU7EwcuHAq30E8M2xyqt3PDlpJd%2fCTNj8khzzqJAc%3d&risl=&pid=ImgRaw&r=0);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .night-side {
-  background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cad4b52e-f6b1-432f-9035-a5f4853bcf15/d79j5ub-d5d98d2d-cb50-4806-a67b-103b4d08280b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9jYWQ0YjUyZS1mNmIxLTQzMmYtOTAzNS1hNWY0ODUzYmNmMTUvZDc5ajV1Yi1kNWQ5OGQyZC1jYjUwLTQ4MDYtYTY3Yi0xMDNiNGQwODI4MGIuZ2lmIn1dXX0.WouG2UZ_AiFs_MC_IvMalgNT6-ip_KjKFSdTFtqn-_Y);
+  width: 100%;
+  padding-top: 150px;
+  padding-left: 250px;
+  box-sizing: border-box;
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cad4b52e-f6b1-432f-9035-a5f4853bcf15/d79j5ub-d5d98d2d-cb50-4806-a67b-103b4d08280b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9jYWQ0YjUyZS1mNmIxLTQzMmYtOTAzNS1hNWY0ODUzYmNmMTUvZDc5ajV1Yi1kNWQ5OGQyZC1jYjUwLTQ4MDYtYTY3Yi0xMDNiNGQwODI4MGIuZ2lmIn1dXX0.WouG2UZ_AiFs_MC_IvMalgNT6-ip_KjKFSdTFtqn-_Y);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-h1, p, h2, li {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 h1 {
@@ -77,18 +67,18 @@ ul {
   margin-top: 10px;
 }
 
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
+body.night .morning-side {
+  display: none;
 }
 
-@media (max-width: 768px) {
-  .split-container {
-    flex-direction: column;
-  }
-  .morning-side, .night-side {
-    width: 100%;
-    padding: 100px 10px;
-  }
+body.night .night-side {
+  display: block;
 }
-```
+
+body:not(.night) .night-side {
+  display: none;
+}
+
+body:not(.night) .morning-side {
+  display: block;
+}

@@ -41,10 +41,9 @@
   </div>
   <script>
     const btn = document.getElementById('toggleBtn');
-btn.addEventListener('click', () => {
-  document.querySelector('.morning-side').classList.toggle('dimmed');
-  document.querySelector('.night-side').classList.toggle('dimmed');
-});
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('night');
+    });
   </script>
 </body>
 </html>

@@ -23,42 +23,61 @@ body {
   width: 100%;
 }
 
-.morning-side {
+.morning-side,
+.night-side {
   width: 100%;
-  padding-top: 50px;
-  padding-left: 450px;
+  padding: 40px;
   box-sizing: border-box;
   color: white;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://th.bing.com/th/id/R.7d68abd537942d95ac5b2cbb53ed3cf0?rik=GV%2btJJCVIx1i7Q&riu=http%3a%2f%2forig12.deviantart.net%2fb4f8%2ff%2f2015%2f092%2f5%2fe%2fpokemon_sprite_gif___national_park__day__by_loupii-d79aauf.jpg&ehk=a1DU7EwcuHAq30E8M2xyqt3PDlpJd%2fCTNj8khzzqJAc%3d&risl=&pid=ImgRaw&r=0);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.morning-side {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(https://th.bing.com/th/id/R.7d68abd537942d95ac5b2cbb53ed3cf0?rik=GV%2btJJCVIx1i7Q&riu=http%3a%2f%2forig12.deviantart.net%2fb4f8%2ff%2f2015%2f092%2f5%2fe%2fpokemon_sprite_gif___national_park__day__by_loupii-d79aauf.jpg&ehk=a1DU7EwcuHAq30E8M2xyqt3PDlpJd%2fCTNj8khzzqJAc%3d&risl=&pid=ImgRaw&r=0);
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
 }
 
 .night-side {
-  width: 100%;
-  padding-top: 50px;
-  padding-left: 450px;
-  box-sizing: border-box;
-  color: white;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cad4b52e-f6b1-432f-9035-a5f4853bcf15/d79j5ub-d5d98d2d-cb50-4806-a67b-103b4d08280b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9jYWQ0YjUyZS1mNmIxLTQzMmYtOTAzNS1hNWY0ODUzYmNmMTUvZDc5ajV1Yi1kNWQ5OGQyZC1jYjUwLTQ4MDYtYTY3Yi0xMDNiNGQwODI4MGIuZ2lmIn1dXX0.WouG2UZ_AiFs_MC_IvMalgNT6-ip_KjKFSdTFtqn-_Y);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cad4b52e-f6b1-432f-9035-a5f4853bcf15/d79j5ub-d5d98d2d-cb50-4806-a67b-103b4d08280b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9jYWQ0YjUyZS1mNmIxLTQzMmYtOTAzNS1hNWY0ODUzYmNmMTUvZDc5ajV1Yi1kNWQ5OGQyZC1jYjUwLTQ4MDYtYTY3Yi0xMDNiNGQwODI4MGIuZ2lmIn1dXX0.WouG2UZ_AiFs_MC_IvMalgNT6-ip_KjKFSdTFtqn-_Y);
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
 }
 
-h1 {
+.heading {
+  margin-bottom: 10px;
   font-size: 2rem;
+  font-weight: bold;
 }
 
-h2 {
-  margin-top: 20px;
+.intro {
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 100%;
+  max-width: 1000px;
+  text-align: left;
+}
+
+.columns h2 {
   font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 ul {
   list-style-type: circle;
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .trainer-sprite {
@@ -67,18 +86,16 @@ ul {
   margin-top: 10px;
 }
 
+/* Toggle visibility */
 body.night .morning-side {
   display: none;
 }
-
 body.night .night-side {
-  display: block;
+  display: flex;
 }
-
 body:not(.night) .night-side {
   display: none;
 }
-
 body:not(.night) .morning-side {
-  display: block;
+  display: flex;
 }
